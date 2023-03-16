@@ -1,0 +1,73 @@
+ html {
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: sans-serif;
+    background: url('https://img.freepik.com/free-photo/raw-tagliatelle-pasta-near-it-s-ingredients-tomato-sauce-textured-wooden-background_23-2148195011.jpg?w=2000') no-repeat center;
+    background-size: cover;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.wrapper {
+    padding: 20px;
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(2px); /*glassmorfismo --> effetto opaco sullo sfondo*/
+}
+
+h2{
+    text-align: center;
+    margin: 0;
+    font-weight: 200;
+}
+
+.piatti {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+.piatti li{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    font-weight: 100;
+    display: flex;
+}
+
+.piatti label {
+    flex: 1;
+    cursor: pointer;
+}
+
+.piatti input{
+    display: none;
+}
+
+.piatti input + label::before {
+    content: '⬜';
+    margin-right: 10px;
+}
+
+.piatti input:checked + label::before {
+    content: '🥢';
+}
+
+.aggiungiPiatto {
+    margin-top: 20px;
+}
+
+.aggiungiPiatto input {
+    padding: 10px;
+    outline: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}

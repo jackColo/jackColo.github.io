@@ -2,8 +2,9 @@
 const aggiungiPiatti = document.querySelector('.aggiungiPiatto');
 const piatti = document.querySelector('.piatti');
 const listaOrdini = JSON.parse(localStorage.getItem('ordini')) || [];
+const elimina = document.getElementById('cancella');
 aggiungiPiatti.addEventListener('submit', aggiungiPiatto); //posso definire le funzioni dichiarate con function perchè in fase di compilazione sono soggette ad hoisting
-aggiungiPiatti.addEventListener('button', eliminaPiatti);
+elimina.addEventListener('click', eliminaPiatti);
 function aggiungiPiatto(e) {
     e.preventDefault();
     const nome = (this.querySelector('[name="piatto"]')).value;
@@ -17,6 +18,9 @@ function aggiungiPiatto(e) {
     this.reset();
 }
 function eliminaPiatti() {
+    localStorage.removeItem('ordini');
+    listaOrdini.length = 0;
+    popolaLista();
 }
 function popolaLista() {
     piatti.innerHTML = listaOrdini.map((ordine, index) => {

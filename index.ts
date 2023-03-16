@@ -6,9 +6,10 @@ interface Piatto{
 const aggiungiPiatti = document.querySelector('.aggiungiPiatto') as HTMLFormElement;
 const piatti = document.querySelector('.piatti') as HTMLElement;
 const listaOrdini: Piatto[] = JSON.parse(localStorage.getItem('ordini')!) || [];
+const elimina = document.getElementById('cancella') as HTMLElement;
 
 aggiungiPiatti.addEventListener('submit', aggiungiPiatto); //posso definire le funzioni dichiarate con function perchè in fase di compilazione sono soggette ad hoisting
-aggiungiPiatti.addEventListener('button', eliminaPiatti);
+elimina.addEventListener('click', eliminaPiatti);
 
 function aggiungiPiatto(this: any, e: Event) {
     e.preventDefault();
@@ -24,7 +25,9 @@ function aggiungiPiatto(this: any, e: Event) {
 }
 
 function eliminaPiatti(){
-
+    localStorage.removeItem('ordini');
+    listaOrdini.length = 0;
+    popolaLista();
 }
 
 function popolaLista() {
